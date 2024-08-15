@@ -4,7 +4,7 @@ import java.util.*;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Arduino;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
@@ -24,7 +24,7 @@ import frc.robot.utils.Controls;
 import frc.robot.utils.MathDoer;
 import frc.robot.utils.PID;
 
-public class DriveCommand extends CommandBase {
+public class DriveCommand extends Command {
     private Timer timer = new Timer();
     
     private DriveTrain driveTrain;
@@ -39,8 +39,10 @@ public class DriveCommand extends CommandBase {
     private BeamBreak beamBreak;
     private ColorSensor colorSensor;
     private ShuffleboardManager shuffleboard;
+    @SuppressWarnings("unused")
     private JacobSensor jacobSensor;
 
+    @SuppressWarnings("unused")
     private double setpoint;
     private double distance;
     private double leftY;

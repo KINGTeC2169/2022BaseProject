@@ -5,10 +5,10 @@ import frc.robot.utils.ActuatorMap;
 import frc.robot.utils.Constants;
 import frc.robot.utils.PID;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import com.ctre.phoenix.music.Orchestra;
-import com.ctre.phoenix.sensors.SensorVelocityMeasPeriod;
+import com.ctre.phoenix6.Orchestra;
+import com.ctre.phoenix6.configs.ClosedLoopRampsConfigs;
+import com.ctre.phoenix6.configs.OpenLoopRampsConfigs;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 public class Shooter extends SubsystemBase {
     TalonFX shooter = new TalonFX(ActuatorMap.shooter);
@@ -22,20 +22,21 @@ public class Shooter extends SubsystemBase {
     
 
     public Shooter() {
-        shooter.configOpenloopRamp(.5);
-        shooter.configClosedloopRamp(0);
-        shooter.configVelocityMeasurementPeriod(SensorVelocityMeasPeriod.Period_100Ms);
+        OpenLoopRampsConfigs openLoopRampConfigs = new OpenLoopRampsConfigs().withDutyCycleOpenLoopRampPeriod(.5);
+        ClosedLoopRampsConfigs closedLoopRampConfigs = new ClosedLoopRampsConfigs().withDutyCycleClosedLoopRampPeriod(0);
+        shooter.getConfigurator().apply(openLoopRampConfigs);
+        shooter.getConfigurator().apply(closedLoopRampConfigs);
     }
 
     /**Sets shooter motor to 'power' value */
     public void shoot(double power) {
         CompressorTank.disable();
-        shooter.set(ControlMode.PercentOutput, power);
+        shooter.set(power);
     }
 
     /**Calculates RPM value of flywheel */
     public double getRPM() {
-        return (600 * shooter.getSelectedSensorVelocity() / Constants.TalonFXCPR)  * (24.0/18.0);
+        return (600 * shooter.getVelocity().getValueAsDouble() / Constants.TalonFXCPR)  * (24.0/18.0);
     }
 
     /**Original PID loop for RPM setting, don't use this unless there is an unknown error with RPM setting. 
@@ -45,7 +46,7 @@ public class Shooter extends SubsystemBase {
         double error = rpm - getRPM(); // Error = Target - Actual
         //double power = previousPower + (error* .00000125);
         double power = previousPower + (error* .0000014);
-       shooter.set(ControlMode.PercentOutput, power);
+       shooter.set(power);
        previousPower = power;
        previousError = error;
        if(previousPower > 1){
@@ -67,26 +68,26 @@ public class Shooter extends SubsystemBase {
         CompressorTank.disable();
         rpmLoop.setSetpoint(rpm);
         rpmLoop.calculate(getRPM());
-        shooter.set(ControlMode.PercentOutput, rpmLoop.getOutput());
+        shooter.set(rpmLoop.getOutput());
     }
     /**Turns off flywheel */
     public void stopShooter() {
         //shooter.set(ControlMode.PercentOutput, 0);
         rpmLoop.resetI();
-        shooter.set(ControlMode.Disabled, 1);
+        shooter.set(0);
     }
 
     public boolean isShootingLeft() {
-        return shooter.getMotorOutputPercent() > 0;
+        return shooter.getDutyCycle().getValueAsDouble() > 0;
     }
     public boolean isShootingRight() {
-        return shooter.getMotorOutputPercent() < 0;
+        return shooter.getDutyCycle().getValueAsDouble() < 0;
     }
     public double getCurrent() {
-        return shooter.getSupplyCurrent();
+        return shooter.getSupplyCurrent().getValueAsDouble();
     }
     public double getVoltage() {
-        return shooter.getMotorOutputVoltage();
+        return shooter.getMotorVoltage().getValueAsDouble();
     }
     public void playMusic() {
         music.loadMusic("file.chrp");

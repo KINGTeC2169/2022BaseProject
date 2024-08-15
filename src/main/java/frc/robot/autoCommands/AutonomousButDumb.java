@@ -1,6 +1,6 @@
 package frc.robot.autoCommands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.Climber;
@@ -21,7 +21,8 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 
-public class AutonomousButDumb extends CommandBase{
+@SuppressWarnings("unused")
+public class AutonomousButDumb extends Command{
         
     private DriveTrain driveTrain;
     private Shooter shooter;

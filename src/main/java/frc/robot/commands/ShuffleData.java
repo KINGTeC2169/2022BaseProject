@@ -1,6 +1,6 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Arduino;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
@@ -16,14 +16,18 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShuffleboardManager;
 import frc.robot.utils.Controls;
 
-public class ShuffleData extends CommandBase{
+public class ShuffleData extends Command{
     private DriveTrain driveTrain;
+    @SuppressWarnings("unused")
     private Arduino arduino;
     private Shooter shooter;
+    @SuppressWarnings("unused")
     private Intake intake;
+    @SuppressWarnings("unused")
     private Indexer indexer;
     private Climber climber;
     private LimeLight limeLight;
+    @SuppressWarnings("unused")
     private NavX navX;
     private BallManager ballManager;
     private BeamBreak beamBreak;

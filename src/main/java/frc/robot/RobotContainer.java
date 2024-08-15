@@ -26,9 +26,10 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShuffleboardManager;
 import frc.robot.subsystems.Vision;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 
 
+@SuppressWarnings("unused")
 public class RobotContainer {
   private DriveTrain driveTrain = new DriveTrain();
     private Arduino arduino = new Arduino();
@@ -45,6 +46,7 @@ public class RobotContainer {
     private ShuffleboardManager shuffleboard = new ShuffleboardManager();
     private JacobSensor jacobSensor = new JacobSensor();
     private Vision vision = new Vision();
+    @SuppressWarnings("rawtypes")
     private SendableChooser autoChooser = new SendableChooser<String>();
   // The robot's subsystems and commands are defined here...
 
@@ -56,6 +58,7 @@ public class RobotContainer {
   private final TestingCommand m_testCommand = new TestingCommand(driveTrain, arduino, shooter, intake, indexer, climber, limeLight, navX, ballManager, beamBreak, colorSensor, shuffleboard);
   private final RobotInit m_InitCommand = new RobotInit(ballManager);
 
+  @SuppressWarnings("unchecked")
   public RobotContainer() {
     m_shuffleData = new ShuffleData(driveTrain, arduino, shooter, intake, indexer, climber, limeLight, navX, ballManager, beamBreak, colorSensor, shuffleboard, jacobSensor);
     m_death = new Death(driveTrain, shooter, intake, indexer);
@@ -103,7 +106,7 @@ public class RobotContainer {
     return m_shuffleData;
   }
 
-  public CommandBase Die() {
+  public Command Die() {
     return m_death;
   }
 }

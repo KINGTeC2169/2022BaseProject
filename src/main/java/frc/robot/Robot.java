@@ -3,7 +3,6 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -18,7 +17,6 @@ public class Robot extends TimedRobot {
   private Command autoCommand;
   private Command testCommand;
   private RobotContainer m_robotContainer;
-  private SendableChooser autoChooser;
 
   
 
@@ -79,7 +77,7 @@ public class Robot extends TimedRobot {
     autoCommand = m_robotContainer.getAutoCommand();
 
     if(autoCommand != null)
-      autoCommand.schedule(false);
+      autoCommand.schedule();
   }
 
   @Override

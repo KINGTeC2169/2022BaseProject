@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Arduino;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
@@ -16,18 +16,24 @@ import frc.robot.subsystems.NavX;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShuffleboardManager;
 
-public class TestingCommand extends CommandBase {
+public class TestingCommand extends Command {
 
     private DriveTrain driveTrain;
+    @SuppressWarnings("unused")
     private Arduino arduino;
     private Shooter shooter;
     private Intake intake;
     private Indexer indexer;
     private Climber climber;
+    @SuppressWarnings("unused")
     private LimeLight limeLight;
+    @SuppressWarnings("unused")
     private NavX navx;
+    @SuppressWarnings("unused")
     private BallManager ballManager;
+    @SuppressWarnings("unused")
     private BeamBreak beamBreak;
+    @SuppressWarnings("unused")
     private ColorSensor colorSensor;
     private ShuffleboardManager shuffleboard;
     private Timer timer = new Timer();

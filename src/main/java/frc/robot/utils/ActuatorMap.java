@@ -29,7 +29,7 @@ public class ActuatorMap {
     public static final int intakePistonTwo = 6;
     public static final int climberPistonOne = 2;
     public static final int climberPistonTwo = 7;
-    public static final int winch = 0;
+    public static final int winch = 5;
     public static final int dog = 4;
-    public static final int feederPiston = 5;
+    public static final int feederPiston = 0;
 }

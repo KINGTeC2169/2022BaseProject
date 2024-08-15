@@ -1,9 +1,9 @@
 package frc.robot.autoCommands;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 
-public class Spin extends CommandBase {
+public class Spin extends Command {
     private Timer timer = new Timer();
     private int seconds;
     

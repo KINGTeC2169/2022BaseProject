@@ -1,6 +1,6 @@
 package frc.robot.autoCommands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.Climber;
@@ -18,13 +18,14 @@ import frc.robot.utils.PID;
 import frc.robot.utils.MathDoer;
 import edu.wpi.first.wpilibj.Timer;
 
-public class FourBallAuto extends CommandBase{
+public class FourBallAuto extends Command{
     private DriveTrain driveTrain;
     private Shooter shooter;
     private NavX navx;
     private Indexer indexer;
     private Climber climber;
     private Intake intake;
+    @SuppressWarnings("unused")
     private Vision vision;
     private BallManager ballManager;
     private LimeLight limeLight;
@@ -34,11 +35,15 @@ public class FourBallAuto extends CommandBase{
 
     private boolean zeroing = true;
     private boolean intakeDown = true;
+    @SuppressWarnings("unused")
     private boolean singleInit = true;
     private boolean sameBall;
     private int ballsShot = 0;
+    @SuppressWarnings("unused")
     private double desiredRPM;
+    @SuppressWarnings("unused")
     private double lastKnownRPM;
+    @SuppressWarnings("unused")
     private boolean snakeVenom;
     //public static final int BLUE = 1;
     //public static final int RED = 2;
@@ -69,6 +74,7 @@ public class FourBallAuto extends CommandBase{
     //Zoom Turn Speed
     private static final double zoomTurn = .6;
     //bigger = more turn, smaller = less turn, don't worry about units, encoder ticks don't relate to angles -- how far to turn - most likely wrong   
+    @SuppressWarnings("unused")
     private static final double turnAngle = MathDoer.turnTicks(64);
     //the rpm the shooter is constantly  
     private static final double defaultRPM = -3600;

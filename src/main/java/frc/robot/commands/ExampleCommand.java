@@ -1,9 +1,10 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.NavX;
 
-public class ExampleCommand extends CommandBase {
+public class ExampleCommand extends Command {
+    @SuppressWarnings("unused")
     private NavX navX;
     public  ExampleCommand(NavX subsystem) {
         navX = subsystem;

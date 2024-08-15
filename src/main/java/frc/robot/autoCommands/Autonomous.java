@@ -1,6 +1,6 @@
 package frc.robot.autoCommands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.BallManager;
 import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.Climber;
@@ -18,10 +18,11 @@ import frc.robot.utils.PID;
 import edu.wpi.first.wpilibj.Timer;
 
 
-public class Autonomous extends CommandBase {
+public class Autonomous extends Command {
     
     private DriveTrain driveTrain;
     private Shooter shooter;
+    @SuppressWarnings("unused")
     private NavX navx;
     private Indexer indexer;
     private Climber climber;
@@ -30,13 +31,17 @@ public class Autonomous extends CommandBase {
     private BallManager ballManager;
     private LimeLight limeLight;
     private BeamBreak beamBreak;
+    @SuppressWarnings("unused")
     private ShuffleboardManager shuffleboard;
 
 
+    @SuppressWarnings("unused")
     private int team;
+    @SuppressWarnings("unused")
     private boolean holyShitTheresABall;
     private boolean zeroing = true;
     private boolean intakeDown = true;
+    @SuppressWarnings("unused")
     private boolean singleInit = true;
     private boolean sameBall;
     private double desiredRPM;
